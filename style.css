@@ -5,16 +5,16 @@
     border-radius: 6px;
     box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
     box-sizing: border-box;
-    padding: 0 0 20px;
+    padding:  20px;
     overflow: hidden;
     border: 1px solid lightgray;
 }
 
 [data-tab-content]{
-    margin: 20px;
+    
 }
 ul{
-    margin-left: -20px;
+    margin-left: -40px;
 }
 li{
     list-style-type: none;
@@ -22,4 +22,8 @@ li{
     margin-right: 20px;
     border-bottom: 5px solid #cccc
     
+}
+li:hover{
+    border-color: palegreen; 
+    cursor: pointer;
 }
