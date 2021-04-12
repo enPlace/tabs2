@@ -10,17 +10,17 @@
 </head>
 <body>
     <div class = "wrapper">
-        <ul class = "tab-container">
+        <ul id = "tab-container">
             <li class = "tab" data-tab-target = "#home" id ="hometab">Home</li>
             <li class = "tab" data-tab-target = "#pricing" id ="pricetab">Pricing</li>
             <li class = "tab" data-tab-target = "#about" id ="abouttab">About</li>
         </ul>
-        <form>
-            <input type="text">
+        <form id ="add-tab">
+            <input id ="tab-input" type="text">
             <button>Add</button>
         </form>
 
-        <div class="content-container">
+        <div id="content-container">
             <div id="home" data-tab-content>
                 <h1>Home</h1>
                 <p>This is the home page.</p>
