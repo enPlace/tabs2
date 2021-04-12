@@ -38,6 +38,9 @@ tabForm.addEventListener('submit', e=>{
     e.preventDefault()
     const inputValue =tabInput.value
     const listLength= document.querySelectorAll(".tab").length
+    if (inputValue ==""){
+    }else{
+
     const newLi = document.createElement("li")
     const newDiv =document.createElement("div")
     const newH1 = document.createElement("h1")
@@ -119,5 +122,5 @@ tabForm.addEventListener('submit', e=>{
 
    
    7. */
-})
+}})
 
