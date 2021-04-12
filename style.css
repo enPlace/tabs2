@@ -11,6 +11,7 @@
 }
 
 [data-tab-content]{
+    display:none;
     
 }
 ul{
@@ -24,6 +25,18 @@ li{
     
 }
 li:hover{
-    border-color: palegreen; 
+    border-color: rgba(197, 2, 204, 0.678); 
     cursor: pointer;
+}
+.tab.active{
+    border-color: palegreen;
+ 
+}
+.tab.active:hover:{
+    border-color: palegreen;
+    cursor: default;
+}
+
+[data-tab-content].active{
+    display: block;
 }
