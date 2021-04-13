@@ -4,6 +4,7 @@ let tabForm =document.querySelector("#add-tab")
 let tabInput =document.querySelector("#tab-input")
 let tabContainer = document.querySelector("#tab-container")
 let contentContainer = document.querySelector("#content-container")
+const deleteButton = document.querySelector("#delete-button")
 
 
 //Add an event listener that makes class ="active" for clicked tab and related content.
@@ -27,9 +28,9 @@ tabs.forEach(tab=>{
 
 
 
-/* Next, we want to use the form to add a new tab. This will: 
--make a new tab
--make associated content
+/* The input form on the page is for adding a new tab. This will: 
+-make a new tab at the top
+-tie the tab to and generate associated content below
 -fill in content, attributes, and tab text automatically, with text generated from 
 the input field
 -replace event listener on tabs
@@ -92,35 +93,25 @@ tabForm.addEventListener('submit', e=>{
 
    tabForm.reset()
 
-
-
-
-
-
-    
-
-
-
-    
-   /* we want to: 
-   1. add new li for tab
-   2. make the text content that is the submit value 
-   3. add class tab for styling
-   4. clone and replace all tabs to add event listener again
-   
-   5. add a data-tab-target attribute with `newtab${listLength+1}`
-   
-   . make new div for content, with : 
-   . id of newtab${listLength+1}
-   . attribute of data-tab-content
-   . header
-   . p
-
-   .append to document
-   .reset tabs and tabContent 
-   .reset tab form 
-
-   
-   7. */
 }})
 
+/* The delete button at the bottom is for deleting the current tab and its 
+associated content. This will remove anything on the page that is labled with the class "active." 
+It should also alert this user to make sure they want to delete this tab.  */
+
+deleteButton.addEventListener('click', e=>{
+    const active = document.querySelectorAll(".active")
+    if(window.confirm("Are you sure you want to delete this tab?")){
+        active.forEach(node=>
+            node.parentNode.removeChild(node))
+            tabs = document.querySelectorAll(".tab")
+            const target = document.querySelector(tabs[0].dataset.tabTarget)
+            target.classList = "active"
+            tabs[0].classList ="active tab"
+            console.log(tabs[0])
+    }
+    else{
+        
+    }
+   
+})
