@@ -34,6 +34,11 @@ form button{
     border-radius: 3px;
     margin-right: 3%
 }
+#delete-button:hover{
+    cursor: pointer;
+    background: #742faf;
+    
+}
 .delete-container{
     display: flex;
     justify-content: flex-end;

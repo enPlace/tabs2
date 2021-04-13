@@ -8,33 +8,27 @@ const deleteButton = document.querySelector("#delete-button")
 
 
 //Add an event listener that makes class ="active" for clicked tab and related content.
-//It also has to remove "active" from all tabs to make sure that no two tab/content pairs have"active" at same time
-tabs.forEach(tab=>{
-    tab.addEventListener('click', e=>{
-        const target =document.querySelector(tab.dataset.tabTarget)
-
-        tabs.forEach(tab =>{
+//It also has to remove "active" from all tabs to make sure that no two tab/content pairs have"active" at same time. 
+//We'll do this with event delegation so that the function will work with new tabs added by the user. 
+document.addEventListener('click', e=>{
+    if (e.target.matches(".tab")){
+        console.log(e.target)
+        const targetContent = document.querySelector(e.target.dataset.tabTarget)
+        tabs.forEach(tab=>{
             tab.classList.remove("active")
         })
-    tab.classList.add("active")
-    tabContent.forEach(content =>{
-        content.classList.remove("active")
-    })
-    target.classList.add("active")
-    })
+        tabContent.forEach(content=>{
+            content.classList.remove("active")
+        })
+        e.target.classList.add("active")
+        targetContent.classList.add("active")
 
-
+    }
 })
 
 
-
-/* The input form on the page is for adding a new tab. This will: 
--make a new tab at the top
--tie the tab to and generate associated content below
--fill in content, attributes, and tab text automatically, with text generated from 
-the input field
--replace event listener on tabs
- */
+//this form adds a tab, adds associated content, and adds all the attributes to make the 
+//above functions and event listeners work for the new tab. 
 tabForm.addEventListener('submit', e=>{
     e.preventDefault()
     const inputValue =tabInput.value
@@ -50,11 +44,6 @@ tabForm.addEventListener('submit', e=>{
     newLi.textContent = inputValue
     newLi.classList = "tab"
     newLi.setAttribute("id", `newtab${listLength+1}`)
-
-    //clone and replace tabs to remove event listener
-    tabs.forEach(tab=>{
-        tab.replaceWith(tab.cloneNode(true))
-    })
     newLi.setAttribute("data-tab-target", `#new-content${listLength+1}`)
     tabContainer.appendChild(newLi)
     tabs = document.querySelectorAll(".tab")
@@ -71,25 +60,6 @@ tabForm.addEventListener('submit', e=>{
     newDiv.appendChild(newP)
     contentContainer.appendChild(newDiv)
     tabContent = document.querySelectorAll("[data-tab-content]")
-
-    //we have tabs and content, now to re-add the event listener to all tabs 
-
-    tabs.forEach(tab=>{
-        tab.addEventListener('click', e=>{
-            const target =document.querySelector(tab.dataset.tabTarget)
-    
-            tabs.forEach(tab =>{
-                tab.classList.remove("active")
-            })
-        tab.classList.add("active")
-        tabContent.forEach(content =>{
-            content.classList.remove("active")
-        })
-        target.classList.add("active")
-        })
-    
-    
-    })
 
    tabForm.reset()
 
