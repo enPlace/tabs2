@@ -12,7 +12,6 @@ const deleteButton = document.querySelector("#delete-button")
 //We'll do this with event delegation so that the function will work with new tabs added by the user. 
 document.addEventListener('click', e=>{
     if (e.target.matches(".tab")){
-        console.log(e.target)
         const targetContent = document.querySelector(e.target.dataset.tabTarget)
         tabs.forEach(tab=>{
             tab.classList.remove("active")
